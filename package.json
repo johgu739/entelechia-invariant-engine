@@ -7,9 +7,9 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "files": [
@@ -20,8 +20,8 @@
   ],
   "scripts": {
     "test": "vitest run",
-    "prepare": "tsup",
-    "build": "tsup",
+    "prepare": "npm run build",
+    "build": "tsup && NODE_OPTIONS='--max-old-space-size=8192' tsc --emitDeclarationOnly --declaration --outDir dist",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx"
