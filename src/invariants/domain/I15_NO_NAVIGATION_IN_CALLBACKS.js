@@ -1,0 +1,37 @@
+/**
+ * ✅ ENTELECHIA INVARIANT ENGINE — I15: No Navigation In Callbacks
+ *
+ * CATEGORY: DOMAIN_LOGIC
+ * ENFORCEMENT: DURING_CALLBACK_EXECUTION
+ *
+ * Telos: Navigation must not happen in callbacks (event handlers, promise callbacks, etc.).
+ * Navigation should happen in effects or explicit event handlers, not in nested callbacks.
+ * This ensures deterministic navigation timing.
+ *
+ * Enforcement:
+ * - Prevents navigation in callbacks (promise callbacks, nested handlers, etc.)
+ * - Ensures navigation happens in effects or explicit event handlers
+ */
+import { InvariantViolationError } from '../../core/errors';
+export const I15_NO_NAVIGATION_IN_CALLBACKS = {
+    category: 'DOMAIN_LOGIC',
+    code: 'I15',
+    name: 'No Navigation In Callbacks',
+    description: 'Navigation must not happen in callbacks (event handlers, promise callbacks, etc.). Navigation should happen in effects or explicit event handlers.',
+    severity: 'ERROR',
+    enforce: (_node, context) => {
+        const navigationInCallback = context.navigationInCallback;
+        const callbackType = context.callbackType;
+        const sourceComponent = context.sourceComponent;
+        // If navigation in callback detected, that's a violation
+        if (navigationInCallback === true) {
+            throw new InvariantViolationError('DOMAIN_LOGIC.I15', 'DOMAIN_LOGIC', 'I15', `I15_NO_NAVIGATION_IN_CALLBACKS violation: Navigation detected in callback${callbackType ? ` (${callbackType})` : ''}. Navigation must not happen in callbacks. Navigation should happen in effects or explicit event handlers, not in nested callbacks.`, {
+                navigationInCallback: true,
+                callbackType,
+                sourceComponent,
+                source: context.sourceFile || 'unknown',
+            });
+        }
+    },
+};
+//# sourceMappingURL=I15_NO_NAVIGATION_IN_CALLBACKS.js.map

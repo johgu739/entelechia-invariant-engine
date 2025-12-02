@@ -1,0 +1,28 @@
+/**
+ * ✅ ENTELECHIA INVARIANT ENGINE — F64: Scroll Constraint
+ *
+ * CATEGORY: UI_SCROLL
+ * ENFORCEMENT: ON_FIRST_RENDER
+ *
+ * Scroll may only occur in the content area.
+ * Never in body, never in root, never in sidebar.
+ * This is a UI-equivalent of natural law.
+ */
+import { InvariantViolationError } from '../../core/errors';
+export const F64_SCROLL_CONSTRAINT = {
+    category: 'UI_SCROLL',
+    code: 'F64',
+    name: 'Scroll Constraint',
+    description: 'Scroll may only occur in the content area. Never in body, never in root, never in sidebar. This is a UI-equivalent of natural law.',
+    severity: 'ERROR',
+    enforce: (_node, context) => {
+        const scrollLocation = context.scrollLocation;
+        if (scrollLocation === 'body' || scrollLocation === 'root' || scrollLocation === 'sidebar') {
+            throw new InvariantViolationError('UI_SCROLL.F64', 'UI_SCROLL', 'F64', `F64 violation: Scroll detected in ${scrollLocation}. Scroll may only occur in content area.`, {
+                scrollLocation,
+                source: context.sourceComponent || context.sourceFile || 'unknown',
+            });
+        }
+    },
+};
+//# sourceMappingURL=F64_SCROLL_CONSTRAINT.js.map

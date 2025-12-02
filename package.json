@@ -1,0 +1,44 @@
+{
+  "name": "@entelechia/invariant-engine",
+  "version": "0.1.0",
+  "description": "Centralized invariant engine for Entelechia",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "src",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "prepare": "tsup",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "keywords": [
+    "invariant",
+    "constraint",
+    "validation"
+  ],
+  "author": "Entelechia",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsup": "^8.0.0"
+  },
+  "dependencies": {}
+}
+
