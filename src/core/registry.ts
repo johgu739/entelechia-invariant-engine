@@ -35,7 +35,10 @@ const CATEGORY_RANGES: Record<InvariantCategory, { min: number; max: number }> =
   UI_SPACING: { min: 86, max: 110 },
   SYSTEM_STATE: { min: 1, max: 50 },
   SYSTEM_ROUTER: { min: 12, max: 39 },
+  SYSTEM_ARCHITECTURE: { min: 1, max: 99 },
   DOMAIN_LOGIC: { min: 1, max: 200 }, // Expanded range for domain invariants (F68, F82, etc.)
+  ACT: { min: 1, max: 99 }, // ✅ ACT-layer invariants (F99 = Reroute Detected)
+  INTENT: { min: 1, max: 99 }, // ✅ Intent-layer invariants (F55 = Executor Cannot Be Hook)
 }
 
 /**

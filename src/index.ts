@@ -42,3 +42,13 @@ export * from './invariants/ui'
 export * from './invariants/system'
 export * from './invariants/domain'
 
+// Architecture exports
+export {
+  recordArchitectureViolation,
+  getRecentArchitectureViolations,
+  clearArchitectureViolations,
+  loadViolationsFromLog,
+  initializeViolationLog,
+  type ArchitectureViolationContext,
+} from './architecture/metaphysical-sentry'
+

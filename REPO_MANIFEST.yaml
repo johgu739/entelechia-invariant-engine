@@ -1,0 +1,17 @@
+version: 1
+name: entelechia-invariant-engine
+layer: FORM
+finalCause: >
+  Define and register all invariants and architectural constraints for the
+  organism as FORM. Provide the invariant registry and schemas that others
+  consume; no UI/runtime concerns.
+parent: entelechia-purpose
+allowedChildren:
+  - entelechia-act-engine
+forbiddenImports:
+  - entelechia-act-engine
+  - entelechia-core
+  - entelechia-ui
+  - entelechia-design-system
+  - entelechia-contract-wall
+  - entelechia-topology

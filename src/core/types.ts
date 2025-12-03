@@ -18,7 +18,10 @@ export type InvariantCategory =
   | 'UI_SPACING'
   | 'SYSTEM_STATE'
   | 'SYSTEM_ROUTER'
+  | 'SYSTEM_ARCHITECTURE'
   | 'DOMAIN_LOGIC'
+  | 'ACT'  // ✅ ACT-layer invariants (pipeline, canonicalization, STATE generation)
+  | 'INTENT'  // ✅ Intent-layer invariants (IntentGraph, executors, mutations)
 
 /**
  * Invariant Severity
